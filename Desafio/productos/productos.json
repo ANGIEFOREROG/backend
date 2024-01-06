@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Cuadro personalizado",
+    "description": "Personaliza tu cuadro a tu estilo",
+    "price": 45000,
+    "thumbnail": "imagen",
+    "stock": 30,
+    "code": "abc02",
+    "id": 2
+  }
+]
