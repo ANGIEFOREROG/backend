@@ -1,0 +1,74 @@
+<main class="main-container">
+
+    <h1 class="ff-secondary"> Tienda de cuadros personalizados</h1>
+
+    <section class="productPage-container">
+        <section class="productsForm-section">
+
+            <form class="form-section" method="post">
+                <input name="title" placeholder="Title" required />
+                <input name="code" placeholder="Code" required />
+                <input name="description" placeholder="Description" required />
+                <input name="thumbnails" placeholder="Thumbnails" required />
+                <input name="stock" placeholder="Stock" required />
+                <input name="price" placeholder="Price" required />
+
+                <button class="btn-success ff-secondary fs-3" type="submit">
+                    {{#if selectedProduct}}
+                    Update
+                    {{else}}
+                    Create
+                    {{/if}}
+                </button>
+
+            </form>
+
+            <div>
+                <img class="form-llama"
+                    src="https://m.media-amazon.com/images/I/81cB1eMSOWL._AC_UF894,1000_QL80_.jpg"
+                    alt="llama" />
+            </div>
+        </section>
+
+
+        <section class="products-section">
+
+            {{!-- <button class="btn-delete ff-secondary fs-3">
+            </button> --}}
+
+            <ul class="products-list">
+
+                {{#each products}}
+
+                <li class='product-item' data-id='{{this._id}}'>
+                    <img src="{{this.thumbnails.[0]}}" alt="Image of {{this.title}}" class='product-item__image' />
+
+                    <div class='product-item__body'>
+                        <p class='ff-secondary fs-2 ls-1'>{{this.title}}</p>
+                        <p>{{this.Description}}</p>
+                        <p>Price: {{this.price}}</p>
+                    </div>
+
+                    <div class='product-item__buttons'>
+                        <button class='btn-edit ff-secondary fs-2'>
+                            Edit
+                        </button>
+                        <button class='btn-delete ff-secondary fs-2'>
+                            Delete
+                        </button>
+                    </div>
+
+                </li>
+
+                {{/each}}
+
+            </ul>
+
+        </section>
+    </section>
+
+</main>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

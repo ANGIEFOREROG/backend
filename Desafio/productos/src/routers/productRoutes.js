@@ -74,6 +74,9 @@ productsRouter.post('/', async (req, res) => {
         const newProduct = {
             id: newId,
             title: req.body.title,
+
+
+            
             description: req.body.description,
             code: req.body.code,
             price: req.body.price,
