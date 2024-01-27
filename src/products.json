@@ -1,0 +1,220 @@
+[
+  {
+    "title": "cuadro famiiar",
+    "description": "inspirado en unalinda familia",
+    "price": 20,
+    "thumbnail": "path/to/cuadro.familia.jpg",
+    "code": "def001",
+    "stock": 50,
+    "id": 6
+  },
+  {
+    "title": "cuadro superherores",
+    "description": "inspirado en tu superheroe",
+    "price": 50,
+    "thumbnail": "path/to/cuadrosuperheroe.jpg",
+    "code": "jkl1",
+    "stock": 30,
+    "id": 7
+  },
+  {
+    "title": "posters",
+    "description": "inspirado a tu estilo",
+    "price": 200,
+    "thumbnail": "path/to/posters.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 8
+  },
+  {
+    "title": "cuadro mascotas",
+    "description": "hermoso cuadro en madera ",
+    "price": 1000,
+    "thumbnail": "path/to/cuadro.jpg",
+    "code": "abc001",
+    "stock": 10,
+    "id": 9
+  },
+  {
+    "title": "cuadro famiiar",
+    "description": "inspirado en unalinda familia",
+    "price": 20,
+    "thumbnail": "path/to/cuadro.familia.jpg",
+    "code": "def001",
+    "stock": 50,
+    "id": 10
+  },
+  {
+    "title": "cuadro superherores",
+    "description": "inspirado en tu superheroe",
+    "price": 50,
+    "thumbnail": "path/to/cuadrosuperheroe.jpg",
+    "code": "jkl1",
+    "stock": 30,
+    "id": 11
+  },
+  {
+    "title": "posters",
+    "description": "inspirado a tu estilo",
+    "price": 200,
+    "thumbnail": "path/to/posters.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 12
+  },
+  {
+    "title": "cuadro mascota",
+    "description": "inspirado en la acción mas linda de tu mascota ",
+    "code": "adc002",
+    "price": "300000",
+    "stock": "5",
+    "category": "mascotas",
+    "thumbnails": "www.mascotas.com",
+    "id": 13
+  },
+  {
+    "title": "cuadro mascotas",
+    "description": "hermoso cuadro en madera ",
+    "price": 1000,
+    "thumbnail": "path/to/cuadro.jpg",
+    "code": "abc001",
+    "stock": 10,
+    "id": 14
+  },
+  {
+    "title": "cuadro famiiar",
+    "description": "inspirado en unalinda familia",
+    "price": 20,
+    "thumbnail": "path/to/cuadro.familia.jpg",
+    "code": "def001",
+    "stock": 50,
+    "id": 15
+  },
+  {
+    "title": "posters",
+    "description": "inspirado a tu estilo",
+    "price": 200,
+    "thumbnail": "path/to/posters.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 17
+  },
+  {
+    "title": "cuadro mascotas",
+    "description": "hermoso cuadro en madera ",
+    "price": 1000,
+    "thumbnail": "path/to/cuadro.jpg",
+    "code": "abc001",
+    "stock": 10,
+    "id": 18
+  },
+  {
+    "title": "cuadro famiiar",
+    "description": "inspirado en unalinda familia",
+    "price": 20,
+    "thumbnail": "path/to/cuadro.familia.jpg",
+    "code": "def001",
+    "stock": 50,
+    "id": 19
+  },
+  {
+    "title": "cuadro superherores",
+    "description": "inspirado en tu superheroe",
+    "price": 50,
+    "thumbnail": "path/to/cuadrosuperheroe.jpg",
+    "code": "jkl1",
+    "stock": 30,
+    "id": 20
+  },
+  {
+    "title": "posters",
+    "description": "inspirado a tu estilo",
+    "price": 200,
+    "thumbnail": "path/to/posters.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 21
+  },
+  {
+    "title": "cuadro mascotas",
+    "description": "hermoso cuadro en madera ",
+    "price": 1000,
+    "thumbnail": "path/to/cuadro.jpg",
+    "code": "abc001",
+    "stock": 10,
+    "id": 22
+  },
+  {
+    "title": "cuadro famiiar",
+    "description": "inspirado en unalinda familia",
+    "price": 20,
+    "thumbnail": "path/to/cuadro.familia.jpg",
+    "code": "def001",
+    "stock": 50,
+    "id": 23
+  },
+  {
+    "title": "cuadro superherores",
+    "description": "inspirado en tu superheroe",
+    "price": 50,
+    "thumbnail": "path/to/cuadrosuperheroe.jpg",
+    "code": "jkl1",
+    "stock": 30,
+    "id": 24
+  },
+  {
+    "title": "posters",
+    "description": "inspirado a tu estilo",
+    "price": 200,
+    "thumbnail": "path/to/posters.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 25
+  },
+  {
+    "title": "cuadro mascotas",
+    "description": "hermoso cuadro en madera ",
+    "price": 1000,
+    "thumbnail": "path/to/cuadro.jpg",
+    "code": "abc001",
+    "stock": 10,
+    "id": 26
+  },
+  {
+    "title": "cuadro famiiar",
+    "description": "inspirado en unalinda familia",
+    "price": 20,
+    "thumbnail": "path/to/cuadro.familia.jpg",
+    "code": "def001",
+    "stock": 50,
+    "id": 27
+  },
+  {
+    "title": "cuadro superherores",
+    "description": "inspirado en tu superheroe",
+    "price": 50,
+    "thumbnail": "path/to/cuadrosuperheroe.jpg",
+    "code": "jkl1",
+    "stock": 30,
+    "id": 28
+  },
+  {
+    "title": "posters",
+    "description": "inspirado a tu estilo",
+    "price": 200,
+    "thumbnail": "path/to/posters.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 29
+  },
+  {
+    "title": "cuadro abuelo",
+    "description": "imagen familiar",
+    "code": "abc006",
+    "price": "40000",
+    "stock": "6",
+    "category": "cuadros tejidos",
+    "thumbnails": "www.cuadro.art.com",
+    "id": 30
+  }
+]

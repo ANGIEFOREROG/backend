@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const { readFile, writeFile } = require('fs').promises;
 
 class ProductManager {
     constructor(filePath) {
@@ -54,8 +55,8 @@ class ProductManager {
     }
 
     async saveProductsToFile(products) {
-        await fs.writeFile(this.path, JSON.stringify(products, null, 2), 'utf8');
-    }
+        await writeFile(this.path, JSON.stringify(products, null, 2), 'utf8');
+    }    
 }
 
 // Ejemplo de uso
@@ -64,69 +65,69 @@ const manager = new ProductManager('products.json');
 (async () => {
     // Añadir productos
     await manager.addProduct({
-        title: "cuadrocaricaturas",
-        description: "cuadro en acrilico",
-        price: 20000,
-        thumbnail: "image/to/caricaturas.jpg",
-        code: "ab000",
+        title: "cuadro mascotas",
+        description: "hermoso cuadro en madera ",
+        price: 1000,
+        thumbnail: "path/to/cuadro.jpg",
+        code: "abc001",
         stock: 10
     });
 
     await manager.addProduct({
-        title: "cuadros mascotas",
-        description: "cuadro en madera",
-        price: 15000,
-        thumbnail: "image/to/mascotas.jpg",
-        code: "ab001",
+        title: "cuadro famiiar",
+        description: "inspirado en unalinda familia",
+        price: 20,
+        thumbnail: "path/to/cuadro.familia.jpg",
+        code: "def001",
+        stock: 50
+    });
+
+    await manager.addProduct({
+        title: "cuadro superherores",
+        description: "inspirado en tu superheroe",
+        price: 50,
+        thumbnail: "path/to/cuadrosuperheroe.jpg",
+        code: "jkl1",
         stock: 30
     });
 
     await manager.addProduct({
-        title: "cuadro familia",
-        description: "cuadro familiar decoracion de sala",
-        price: 14000,
-        thumbnail: "image/to/familiar.jpg",
-        code: "ab002",
-        stock: 10
-    });
-
-    await manager.addProduct({
-        title: "cuadro superheroes",
-        description: "cuadros para niños",
-        price: 30000,
-        thumbnail: "image/to/superheroes.jpg",
-        code: "ab003",
-        stock: 15
+        title: "posters",
+        description: "inspirado a tu estilo",
+        price: 200,
+        thumbnail: "path/to/posters.jpg",
+        code: "MNT001",
+        stock: 20
     });
 
     // Obtener todos los productos
     const products = await manager.getProducts();
-    console.log("Todos los productos:", products);
+    //console.log("Todos los productos:", products);
 
     // Obtener producto por ID
-    const productId = 2; // Por ejemplo, el ID 2
+    const productId = 2; // Por ejemplo, el ID del producto "Mouse"
     const productById = await manager.getProductById(productId);
-    console.log("Producto por ID:", productById);
+    //console.log("Producto por ID:", productById);
 
     // Actualizar producto
     const updatedProduct = {
-        title: "nuevo cuadro mascotas",
-        description: "hermos cuadro en madera",
-        price: 2500,
-        thumbnail: "image/to/wireless-cuadromascotas.jpg",
-        code: "ab001",
-        stock: 55
+        title: "Mouse inalámbrico",
+        description: "Un ratón inalámbrico para computadora",
+        price: 25,
+        thumbnail: "path/to/wireless-mouse.jpg",
+        code: "MS001",
+        stock: 45
     };
     await manager.updateProduct(productId, updatedProduct);
-    console.log("Producto actualizado.");
+    //console.log("Producto actualizado.");
 
     // Eliminar producto
-    await manager.deleteProduct(4); // Por ejemplo, eliminar el producto con ID 4 
-    console.log("Producto eliminado.");
+    await manager.deleteProduct(4); // Por ejemplo, eliminar el producto con ID 4 (Monitor)
+    //console.log("Producto eliminado.");
 
     // Verificar productos actualizados
     const updatedProducts = await manager.getProducts();
-    console.log("Productos actualizados:", updatedProducts);
+    //console.log("Productos actualizados:", updatedProducts);
 })();
 
 module.exports = ProductManager;

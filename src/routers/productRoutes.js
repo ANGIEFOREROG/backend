@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs').promises;
+const { body, validationResult } = require('express-validator');
 
 const productsRouter = express.Router();
 
@@ -9,20 +10,6 @@ let currentProductId = 1; // Puedes inicializar este valor con el último ID le�
 const getNextProductId = async () => {
     // Aquí, en un escenario real, deberías leer el archivo y determinar el próximo ID disponible.
     return currentProductId++;
-};
-
-// Función para verificar campos requeridos en la solicitud
-const validateProductFields = (req, res) => {
-    const requiredFields = ['title', 'description', 'code', 'price', 'stock', 'category'];
-
-    for (const field of requiredFields) {
-        if (!req.body[field]) {
-            res.status(400).send(`El campo ${field} es obligatorio.`);
-            return false;
-        }
-    }
-
-    return true;
 };
 
 // GET /api/products/
@@ -57,14 +44,23 @@ productsRouter.get('/:pid', async (req, res) => {
     }
 });
 
-// POST /api/products/
-productsRouter.post('/', async (req, res) => {
-    try {
-        // Validar campos requeridos
-        if (!validateProductFields(req, res)) {
-            return;
-        }
+// Validaciones para POST /api/products/
+const validateProduct = [
+    body('title').notEmpty().withMessage('El título es requerido.'),
+    body('description').notEmpty().withMessage('La descripción es requerida.'),
+    body('code').notEmpty().withMessage('El código es requerido.'),
+    body('price').notEmpty().withMessage('El precio es requerido.').isNumeric().withMessage('El precio debe ser numérico.'),
+    body('stock').notEmpty().withMessage('El stock es requerido.').isNumeric().withMessage('El stock debe ser numérico.'),
+    // Agrega las validaciones necesarias para los demás campos requeridos
+];
 
+// POST /api/products/
+productsRouter.post('/', validateProduct, async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    try {
         const products = JSON.parse(await fs.readFile('products.json', 'utf8'));
 
         // Obtener el último ID y generar el nuevo ID
@@ -74,9 +70,6 @@ productsRouter.post('/', async (req, res) => {
         const newProduct = {
             id: newId,
             title: req.body.title,
-
-
-            
             description: req.body.description,
             code: req.body.code,
             price: req.body.price,
@@ -125,6 +118,7 @@ productsRouter.put('/:pid', async (req, res) => {
         res.status(500).send('Error al actualizar producto.');
     }
 });
+
 
 // DELETE /api/products/:pid
 productsRouter.delete('/:pid', async (req, res) => {
