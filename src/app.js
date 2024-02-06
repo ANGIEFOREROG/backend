@@ -3,13 +3,20 @@ const http = require('http');
 const path = require('path');
 const socketIo = require('socket.io');
 const exphbs = require('express-handlebars');
-const ProductManager = require('./product_manager');
+const ProductManager = require('./dao/managers/product_manager.js');
 const productRoutes = require('./routers/productRoutes');
 const cartRoutes = require('./routers/cartRoutes');
+const usersRouter = require('./routers/users.router');
+const { connectBD } = require('./config/connectDB.js');
+const MessagesManagerMongo = require('./dao/managersMongo/messagesManagerMongo.js');
 
 const app = express();
 const server = http.createServer(app);
 const io = require('socket.io')(server);
+
+const messagesManager = new MessagesManagerMongo();
+
+connectBD()
 
 const port = 8080;
 
@@ -28,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configuración de rutas
 app.use('/api/products', productRoutes);
 app.use('/api/carts', cartRoutes);
+app.use('/api/users', usersRouter);
 
 app.get('/products', async (req, res) => {
     try {
@@ -78,6 +86,11 @@ app.get('/realtimeproducts', async (req, res) => {
     }
 });
 
+// Route for chat
+app.get('/chat', (req, res) => {
+    res.render('chat');
+});
+
 
 // Socket.io
 io.on('connection', (socket) => {
@@ -115,6 +128,25 @@ io.on('connection', (socket) => {
         }
     });
     
+    // Handler for new messages
+    socket.on('new message', async (data) => {
+        try {
+            const newMessage = await messagesManager.createMessage(data.user, data.message);
+            io.emit('new message', newMessage);
+        } catch (error) {
+            console.error('Error al guardar el mensaje:', error);
+        }
+    });    
+
+    // Handler for loading previous messages
+    socket.on('load previous messages', async () => {
+        try {
+            const previousMessages = await MessagesManagerMongo.getAllMessages();
+            socket.emit('previous messages', previousMessages);
+        } catch (error) {
+            console.error('Error al cargar mensajes anteriores:', error);
+        }
+    });
 
     socket.on('disconnect', () => {
         console.log('Usuario desconectado');

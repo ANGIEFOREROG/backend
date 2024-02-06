@@ -6,11 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{pageTitle}}</title>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
+        header {
+            background-color: #ae19db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
 <body>
     <header>
         <h1>{{pageTitle}}</h1>
-        
     </header>
 
     <main>
@@ -18,9 +56,7 @@
     </main>
 
     <footer>
-        <p>&copy; ART Cuadros con estilo..</p>
+        <p> @ cuadros y estilos ART</p>
     </footer>
-
 </body>
-
 </html>

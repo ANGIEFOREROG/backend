@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #chat-container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        
+            width: 300px;
+        }
+
+        #chat-title {
+            background-color: #5281df;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        #chat-messages {
+            list-style-type: none;
+            padding: 10px;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        #chat-form {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        input, button {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4808de;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-title">Chat</div>
+        <ul id="chat-messages">
+            <!-- Los mensajes se cargarán aquí -->
+        </ul>
+        <form id="chat-form">
+            <input type="email" id="chat-email" placeholder="Ingresa tu correo" required />
+            <input type="text" id="chat-message" placeholder="Escribe un mensaje" required />
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Asegurar de establecer la conexión con Socket.io en tu archivo JS
+        const socket = io();
+
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('chat-email').value.trim();
+            const message = document.getElementById('chat-message').value.trim();
+
+            if (message) {
+                socket.emit('new message', { user: email, message: message });
+                document.getElementById('chat-message').value = '';
+            }
+        });
+
+        socket.on('new message', function(data) {
+            const messageItem = document.createElement('li');
+            messageItem.textContent = `${data.user}: ${data.message}`;
+            document.getElementById('chat-messages').appendChild(messageItem);
+        });
+    </script>
+</body>
+</html>
