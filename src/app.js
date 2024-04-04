@@ -2,11 +2,12 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const socketIo = require('socket.io');
-const exphbs = require('express-handlebars');
+const { engine } = require('express-handlebars');
 const ProductManager = require('./dao/managers/product_manager.js');
 const productRoutes = require('./routers/productRoutes');
 const cartRoutes = require('./routers/cartRoutes');
 const usersRouter = require('./routers/users.router');
+const viewsRouter = require('./routers/viewRoutes');
 const { connectBD } = require('./config/connectDB.js');
 const MessagesManagerMongo = require('./dao/managersMongo/messagesManagerMongo.js');
 
@@ -24,7 +25,15 @@ const productManager = new ProductManager('products.json');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.engine('handlebars', exphbs.engine());
+// Modificar esta parte para incluir las opciones de Handlebars
+app.engine('handlebars', engine({
+    defaultLayout: 'main',
+    handlebars: require('handlebars'),
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
+}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -36,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/products', productRoutes);
 app.use('/api/carts', cartRoutes);
 app.use('/api/users', usersRouter);
+app.use('/', viewsRouter);
 
 app.get('/products', async (req, res) => {
     try {
@@ -152,6 +162,11 @@ io.on('connection', (socket) => {
         console.log('Usuario desconectado');
     });
 });
+
+// Función para limpiar los datos y convertirlos en un objeto con propiedades propias
+function cleanData(data) {
+    return JSON.parse(JSON.stringify(data));
+}
 
 server.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);

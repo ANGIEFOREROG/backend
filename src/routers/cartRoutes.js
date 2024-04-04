@@ -59,6 +59,62 @@ cartsRouter.post('/:cid/product/:pid', async (req, res) => {
     }
 });
 
+// PUT /api/carts/:cid - Actualizar el carrito con un arreglo de productos
+cartsRouter.put('/:cid', async (req, res) => {
+    try {
+        const { items } = req.body; // Espera recibir un arreglo de items en el cuerpo de la solicitud
+        const cart = await CartModel.findByIdAndUpdate(req.params.cid, { $set: { items } }, { new: true });
+        if (!cart) {
+            return res.status(404).send('Carrito no encontrado.');
+        }
+        res.json(cart);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al actualizar el carrito.');
+    }
+});
+
+// PUT /api/carts/:cid/products/:pid - Actualizar la cantidad de un producto en el carrito
+cartsRouter.put('/:cid/products/:pid', async (req, res) => {
+    try {
+        const { quantity } = req.body; // Cantidad nueva pasada desde req.body
+        const cart = await CartModel.findById(req.params.cid);
+        if (!cart) {
+            return res.status(404).send('Carrito no encontrado.');
+        }
+
+        const itemIndex = cart.items.findIndex(item => item.product.toString() === req.params.pid);
+        if (itemIndex > -1) {
+            cart.items[itemIndex].quantity = quantity; // Actualizar la cantidad del producto
+            await cart.save();
+            res.send('Cantidad del producto actualizada en el carrito.');
+        } else {
+            res.status(404).send('Producto no encontrado en el carrito.');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al actualizar la cantidad del producto en el carrito.');
+    }
+});
+
+// DELETE /api/carts/:cid - Eliminar todos los productos del carrito
+cartsRouter.delete('/:cid', async (req, res) => {
+    try {
+        const cart = await CartModel.findById(req.params.cid);
+        if (!cart) {
+            return res.status(404).send('Carrito no encontrado.');
+        }
+        
+        // Eliminar todos los productos estableciendo items como un arreglo vacío
+        cart.items = [];
+        await cart.save();
+        res.send('Todos los productos fueron eliminados del carrito.');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al eliminar los productos del carrito.');
+    }
+});
+
 // DELETE /api/carts/:cid/product/:pid - Eliminar un producto del carrito
 cartsRouter.delete('/:cid/product/:pid', async (req, res) => {
     try {

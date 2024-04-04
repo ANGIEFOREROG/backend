@@ -18,10 +18,34 @@ const validateProduct = [
 // GET /api/products/
 productsRouter.get('/', async (req, res) => {
     try {
-        const limit = req.query.limit ? parseInt(req.query.limit) : null;
-        const query = ProductModel.find({});
-        const products = limit ? await query.limit(limit) : await query;
-        res.json(products);
+        let { limit = 10, page = 1, sort = '', query = '' } = req.query;
+        limit = parseInt(limit);
+        page = parseInt(page);
+        const skip = (page - 1) * limit;
+
+        // Construir el objeto de consulta y ordenación
+        let queryParams = query ? { $text: { $search: query } } : {};
+        let sortParams = sort === 'asc' ? { price: 1 } : sort === 'desc' ? { price: -1 } : {};
+
+        // Obtener los productos con paginación y ordenación
+        const products = await ProductModel.find(queryParams).sort(sortParams).skip(skip).limit(limit);
+        const totalProducts = await ProductModel.countDocuments(queryParams);
+
+        // Calcular el total de páginas
+        const totalPages = Math.ceil(totalProducts / limit);
+
+        res.json({
+            status: 'success',
+            payload: products,
+            totalPages: totalPages,
+            prevPage: page > 1 ? page - 1 : null,
+            nextPage: page < totalPages ? page + 1 : null,
+            page: page,
+            hasPrevPage: page > 1,
+            hasNextPage: page < totalPages,
+            prevLink: page > 1 ? `/api/products?limit=${limit}&page=${page - 1}&sort=${sort}&query=${query}` : null,
+            nextLink: page < totalPages ? `/api/products?limit=${limit}&page=${page + 1}&sort=${sort}&query=${query}` : null
+        });
     } catch (error) {
         res.status(500).send('Error al obtener productos.');
     }

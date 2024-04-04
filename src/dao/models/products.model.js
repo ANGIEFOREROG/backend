@@ -24,4 +24,7 @@ const productSchema = new Schema({
     thumbnails: [String],
 });
 
+// Añadir índice de texto para los campos title y description
+productSchema.index({ title: 'text', description: 'text', category: 'text' });
+
 module.exports = mongoose.model('products', productSchema);

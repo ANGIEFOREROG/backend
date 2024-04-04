@@ -65,37 +65,37 @@ const manager = new ProductManager('products.json');
 (async () => {
     // Añadir productos
     await manager.addProduct({
-        title: "cuadro familia",
-        description: "armonia y amor",
+        title: "Laptop",
+        description: "Una computadora portátil",
         price: 1000,
-        thumbnail: "path/to/cuadros.jpg",
+        thumbnail: "path/to/laptop.jpg",
         code: "LPTP001",
         stock: 10
     });
 
     await manager.addProduct({
-        title: "cuadro heroes",
-        description: "decoracion para niños",
+        title: "Mouse",
+        description: "Un ratón para computadora",
         price: 20,
-        thumbnail: "path/to/heroes.jpg",
+        thumbnail: "path/to/mouse.jpg",
         code: "MS001",
         stock: 50
     });
 
     await manager.addProduct({
-        title: "cuadro sala",
-        description: "inspirado de la decoracion",
+        title: "Teclado",
+        description: "Un teclado para computadora",
         price: 50,
-        thumbnail: "path/to/cuadrossala.jpg",
+        thumbnail: "path/to/keyboard.jpg",
         code: "KB001",
         stock: 30
     });
 
     await manager.addProduct({
-        title: "cuadromascotas",
-        description: "cuadro alusivo a tu mascota",
+        title: "Monitor",
+        description: "Un monitor de pantalla plana",
         price: 200,
-        thumbnail: "path/to/cuadromascota.jpg",
+        thumbnail: "path/to/monitor.jpg",
         code: "MNT001",
         stock: 20
     });
@@ -111,12 +111,12 @@ const manager = new ProductManager('products.json');
 
     // Actualizar producto
     const updatedProduct = {
-        title: "cuadromascotas",
-        description: "cuadro alusivo a tu mascota",
-        price: 200,
-        thumbnail: "path/to/cuadromascota.jpg",
+        title: "Mouse inalámbrico",
+        description: "Un ratón inalámbrico para computadora",
+        price: 25,
+        thumbnail: "path/to/wireless-mouse.jpg",
         code: "MS001",
-        stock: 20
+        stock: 45
     };
     await manager.updateProduct(productId, updatedProduct);
     //console.log("Producto actualizado.");

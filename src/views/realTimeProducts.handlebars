@@ -1,80 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos en Tiempo Real</title>
-    <style>
-        
-    
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
 
-        h1 {
-            text-align: center;
-            color: blueviolet;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input, textarea {
-            width: 30%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            width: 40%;
-        }
-
-        li {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .deleteProductBtn {
-            padding: 8px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .deleteProductBtn:hover {
-            background-color: #d32f2f;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>ART</h1>
-
-    <!-- Formulario para agregar productos -->
+<h1>Lista de Productos en Tiempo Real</h1>
+<!-- Agregar el formulario para agregar productos -->
     <form id="productForm">
         <label for="title">Título:</label>
         <input type="text" id="title" name="title" required>
@@ -100,8 +26,6 @@
         <button type="submit">Agregar Producto</button>
     </form>
 
-    <!-- Lista de Productos en Tiempo Real -->
-    <h1>Lista de Productos en Tiempo Real</h1>
     <ul id="realTimeProductList">
         {{#each products}}
             <li>
@@ -120,9 +44,5 @@
         {{/each}}
     </ul>
 
-    <!-- Scripts -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/realTimeProducts.js"></script>
-
-</body>
-</html>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/realTimeProducts.js"></script>

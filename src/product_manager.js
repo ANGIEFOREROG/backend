@@ -111,12 +111,12 @@ const manager = new ProductManager('products.json');
 
     // Actualizar producto
     const updatedProduct = {
-        title: "Mouse inalámbrico",
-        description: "Un ratón inalámbrico para computadora",
-        price: 25,
-        thumbnail: "path/to/wireless-mouse.jpg",
-        code: "MS001",
-        stock: 45
+        title: "posters",
+        description: "inspirado a tu estilo",
+        price: 200,
+        thumbnail: "path/to/posters.jpg",
+        code: "MNT001",
+        stock: 20
     };
     await manager.updateProduct(productId, updatedProduct);
     //console.log("Producto actualizado.");
