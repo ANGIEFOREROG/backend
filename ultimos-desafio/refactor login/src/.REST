@@ -1,0 +1,18 @@
+POST http://localhost:8083/api/session/register
+Content-Type: application/json
+
+{    
+    "first_name": "Angie ",
+    "last_name": "forero",
+    "email":"angie@coder.com", 
+"password": "11"
+}
+
+###
+
+POST http://localhost:8083/api/session/login
+Content-Type: application/json
+
+{"email":"angie@coder.com", 
+"password": "11"
+}

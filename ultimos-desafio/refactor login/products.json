@@ -1,0 +1,22 @@
+    [
+
+        {
+        "title": "posters",
+        "description": "inspirado a tu estilo",
+        "price": 200,
+        "thumbnail": "path/to/monitor.jpg",
+        "code": "MNT001",
+        "stock": 20,
+        "id": 7
+        },
+        
+        {
+        "title": "",
+        "description": "coraz0nes",
+        "price": 20,
+        "thumbnail": "path/to/.jpg",
+        "code": "MS001",
+        "stock": 50,
+        "id": 9
+        }
+    ]
