@@ -1,5 +1,4 @@
 [
-
   {
     "title": "posters",
     "description": "inspirado a tu estilo",
@@ -9,7 +8,6 @@
     "stock": 20,
     "id": 7
   },
-  
   {
     "title": "",
     "description": "coraz0nes",
@@ -18,5 +16,77 @@
     "code": "MS001",
     "stock": 50,
     "id": 9
+  },
+  {
+    "title": "Laptop",
+    "description": "Una computadora portátil",
+    "price": 1000,
+    "thumbnail": "path/to/laptop.jpg",
+    "code": "LPTP001",
+    "stock": 10,
+    "id": 10
+  },
+  {
+    "title": "Mouse",
+    "description": "Un ratón para computadora",
+    "price": 20,
+    "thumbnail": "path/to/mouse.jpg",
+    "code": "MS001",
+    "stock": 50,
+    "id": 11
+  },
+  {
+    "title": "Teclado",
+    "description": "Un teclado para computadora",
+    "price": 50,
+    "thumbnail": "path/to/keyboard.jpg",
+    "code": "KB001",
+    "stock": 30,
+    "id": 12
+  },
+  {
+    "title": "Monitor",
+    "description": "Un monitor de pantalla plana",
+    "price": 200,
+    "thumbnail": "path/to/monitor.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 13
+  },
+  {
+    "title": "Laptop",
+    "description": "Una computadora portátil",
+    "price": 1000,
+    "thumbnail": "path/to/laptop.jpg",
+    "code": "LPTP001",
+    "stock": 10,
+    "id": 14
+  },
+  {
+    "title": "Mouse",
+    "description": "Un ratón para computadora",
+    "price": 20,
+    "thumbnail": "path/to/mouse.jpg",
+    "code": "MS001",
+    "stock": 50,
+    "id": 15
+  },
+  {
+    "title": "Teclado",
+    "description": "Un teclado para computadora",
+    "price": 50,
+    "thumbnail": "path/to/keyboard.jpg",
+    "code": "KB001",
+    "stock": 30,
+    "id": 16
+  },
+  {
+    "title": "Monitor",
+    "description": "Un monitor de pantalla plana",
+    "price": 200,
+    "thumbnail": "path/to/monitor.jpg",
+    "code": "MNT001",
+    "stock": 20,
+    "id": 17
   }
 ]

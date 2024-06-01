@@ -1,0 +1,31 @@
+POST http://localhost:8083/api/session/register
+Content-Type: application/json
+
+{    
+    "first_name": "angie",
+    "last_name": "forero",
+    "email":"angieforero723@gmail.com", 
+"password": "12345"
+}
+
+
+###
+
+
+POST http://localhost:8083/api/session/login
+Content-Type: application/json
+
+
+{"email":"angieforero723@gmail.com", 
+"password": "12345"
+}
+###
+POST http://localhost:8083/carts/users/65fb1fe70f19ae91277ef679/restore-cart
+###
+GET http://localhost:8083/api/session/current
+Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlhdCI6MTcxMTEzNDM2OSwiZXhwIjoxNzExMjIwNzY5fQ.0-70d1LLCh98N1dScwI47ssgS5bp4bBBpJKs6MqhvL0
+
+###
+
+DELETE  http://localhost:8083/api/users/65fb1fe70f19ae91277ef679/carts/65fb20a80f19ae91277ef67d
